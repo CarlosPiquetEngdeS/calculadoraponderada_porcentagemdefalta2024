@@ -44,7 +44,7 @@
             display: block;
         }
 
-        .form-container input[type="number"]{
+        .form-container input[type="number"] {
             width: calc(20% - 24px);
             padding: 1%;
             margin-top: 2%;
@@ -53,16 +53,15 @@
             font-size: 16px;
             background-color: #b6b4b4;
             color: #000000;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3), 
-            inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3),
+                inset 0 -3px 0 rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s ease;
             overflow: hidden;
             -moz-appearance: textfield;
 
-        }   
+        }
 
         .form-container input[type="text"],
-        
         .obs-container textarea {
             width: calc(90% - 24px);
             padding: 1%;
@@ -72,8 +71,9 @@
             font-size: 16px;
             background-color: #b6b4b4;
             color: #000000;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3), 
-            inset 0 -3px 0 rgba(0, 0, 0, 0.2); /* Sombras internas e externas */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3),
+                inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+            /* Sombras internas e externas */
             transition: background-color 0.3s ease;
             overflow: hidden;
             -moz-appearance: textfield;
@@ -93,7 +93,8 @@
         }
 
         .num-subjects-input {
-            width: 200px; /* Ajuste da largura */
+            width: 200px;
+            /* Ajuste da largura */
             padding: 8px;
             font-size: 14px;
             margin-right: 10px;
@@ -126,14 +127,16 @@
             width: 60%;
             padding: 10px;
             margin-top: 13px;
-            background-color:#564c6e ; /* Cor para lembrar botões de calculadora */
+            background-color: #564c6e;
+            /* Cor para lembrar botões de calculadora */
             color: #ffffff;
             border: 2px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3), 
-                        inset 0 -3px 0 rgba(0, 0, 0, 0.2); /* Sombras internas e externas */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3),
+                inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+            /* Sombras internas e externas */
             transition: background-color 0.3s ease, transform 0.1s ease;
         }
 
@@ -149,14 +152,16 @@
             width: 50%;
             padding: 10px;
             margin-top: 15px;
-            background-color:#ff9335 ; /* Cor para lembrar botões de calculadora */
+            background-color: #ff9335;
+            /* Cor para lembrar botões de calculadora */
             color: #000000;
             border: 2px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3), 
-                        inset 0 -3px 0 rgba(0, 0, 0, 0.2); /* Sombras internas e externas */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3),
+                inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+            /* Sombras internas e externas */
             transition: background-color 0.3s ease, transform 0.1s ease;
         }
 
@@ -199,6 +204,7 @@
         }
 
         @keyframes flutuar {
+
             0%,
             100% {
                 transform: translateY(0);
@@ -260,9 +266,11 @@
 
         <div id="obsField" class="obs-container" style="display: none;">
             <label for="obs">Observações:</label>
-            <textarea id="obs" placeholder="Digite as observações (máximo 168 caracteres)" maxlength="168" style="resize: vertical; height: 70px;"></textarea>
+            <textarea id="obs" placeholder="Digite as observações (máximo 168 caracteres)" maxlength="168"
+                style="resize: vertical; height: 70px;"></textarea>
             <button type="button" class="general-button" onclick="saveObservations()">Salvar Observações</button>
-            <button type="button" id="removeObsButton" class="general-button" onclick="removeObservations()" style="display:none;">Remover Observações</button>
+            <button type="button" id="removeObsButton" class="general-button" onclick="removeObservations()"
+                style="display:none;">Remover Observações</button>
             <p id="savedObs" style="color: white;"></p>
         </div>
 
@@ -271,7 +279,8 @@
             <p id="average"></p>
         </div>
         <button type="button" id="generatePDF" class="general-button">Gerar PDF</button>
-        <button type="button" class="faltas-button" onclick="window.location.href='faltas.html'">Calculadora de Porcentagem de Faltas</button>
+        <button type="button" class="faltas-button" onclick="window.location.href='faltas.html'">Calculadora de
+            Porcentagem de Faltas</button>
     </div>
 
     <div class="rodape-flutuante">
