@@ -1,112 +1,177 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Porcentagem de Faltas</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            background-color: #2a24e1;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fefeff;
             color: #000000;
-            background-image: url(02.png);
+            background-image: url(04.png);
             background-size: cover;
             background-repeat: no-repeat;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
+
         .container {
-            max-width: 700px;
-            background-color: rgba(42, 43, 41, 0.9);
+            max-width: 620px;
+            font-size: 13px;
+            color: #fffdfd;
+            margin: 0 auto;
+            background-color: rgba(42, 43, 41, 0.8);
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5);
-            color: #fff;
+            box-shadow: 0 0px 20px rgba(255, 255, 255, 0.5);
+            flex: 1;
             width: 100%;
         }
+
         h1 {
             text-align: center;
             color: #ffffff;
-            margin-bottom: 20px;
-            font-size: 24px;
         }
+
         .form-group {
             margin-bottom: 20px;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 5px;
-            font-weight: bold;
-            color: #ffffff;
         }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: calc(90% - 20px);
             padding: 10px;
-            box-sizing: border-box;
+            margin-top: 10px;
             border: none;
-            border-radius: 5px;
-            font-size: 14px;
-            color: #333;
-        }
-        button {
-            width: 50%;
-            padding: 12px;
-            margin-top: 15px;
-            background-color:#ff9335 ; /* Cor para lembrar botões de calculadora */
+            border-radius: 10px;
+            font-size: 16px;
+            background-color: #b6b4b4;
             color: #000000;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3),
+                inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        /* Ajustes específicos para campos menores */
+        #matricula {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            /* Espaçamento entre os campos */
+            width: calc(55% - 20px)
+        }
+
+        #admissao {
+            width: calc(20% - 20px);
+            /* Reduzido para 50% da largura */
+        }
+
+        #eventos {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            /* Espaçamento entre os campos */
+            width: calc(15% - 20px)
+        }
+
+        .periodo-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            /* Espaçamento entre os campos */
+            width: calc(55% - 20px)
+        }
+
+        .periodo-group div {
+            flex: 1;
+            /* Faz com que os campos ocupem igualmente o espaço disponível */
+        }
+
+        button {
+            width: 60%;
+            padding: 10px;
+            margin-top: 13px;
+            background-color: #564c6e;
+            /* Cor para lembrar botões de calculadora */
+            color: #ffffff;
             border: 2px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3), 
-                        inset 0 -3px 0 rgba(0, 0, 0, 0.2); /* Sombras internas e externas */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3),
+                inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+            /* Sombras internas e externas */
             transition: background-color 0.3s ease, transform 0.1s ease;
         }
+
         button:hover {
-            background-color: #a9a9ff;
+            background-color: #0404f5;
         }
+
+        .button-secondary {
+            width: 60%;
+            padding: 10px;
+            margin-top: 13px;
+            background-color: #fc9b40;
+            /* Cor para lembrar botões de calculadora */
+            color: #ffffff;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3),
+                inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+            /* Sombras internas e externas */
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        .button-secondary:hover {
+            background-color: #0404f5;
+        }
+
         .alert {
-            color: red; 
-            font-weight: bold; 
+            color: red;
+            font-weight: bold;
         }
+
         #resultado {
             margin-top: 20px;
             text-align: center;
-            font-size: 16px;
         }
+
         .evento-group {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 10px;
         }
-        .evento-group input, .evento-group textarea {
-            width: 24%;
-            margin-right: 5px;
+
+        .evento-group input,
+        .evento-group textarea {
+            width: calc(32% - 20px);
             padding: 8px;
-            border-radius: 5px;
+            margin-top: 8px;
             border: none;
+            border-radius: 10px;
+            font-size: 13px;
+            background-color: #f3e0e0;
+            color: #000000;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3),
+                inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
         }
-        @media print {
-            body { 
-                background: none; 
-                color: #000;
-                margin: 0;
-            }
-            .container {
-                box-shadow: none;
-                background: none;
-                color: #000;
-            }
-            button {
-                display: none;
-            }
+
+        #graficoDesempenho {
+            margin-top: 20px;
+            background-color: white;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Calculadora de Porcentagem de Faltas</h1>
@@ -131,13 +196,15 @@
                 <label for="admissao">Admissão:</label>
                 <input type="date" id="admissao" required>
             </div>
-            <div class="form-group">
-                <label for="periodoInicio">Período de:</label>
-                <input type="date" id="periodoInicio" required>
-            </div>
-            <div class="form-group">
-                <label for="periodoFim">Até:</label>
-                <input type="date" id="periodoFim" required>
+            <div class="form-group periodo-group">
+                <div>
+                    <label for="periodoInicio">Período de:</label>
+                    <input type="date" id="periodoInicio" required>
+                </div>
+                <div>
+                    <label for="periodoFim">Até:</label>
+                    <input type="date" id="periodoFim" required>
+                </div>
             </div>
             <div class="form-group">
                 <label for="eventos">Número de Eventos:</label>
@@ -146,11 +213,17 @@
             <div id="eventosContainer"></div>
             <button type="button" onclick="calcularFaltas()">Calcular</button>
             <button type="button" onclick="gerarPDF()">Gerar PDF</button>
+            <button class="button-secondary" type="button" onclick="window.location.href='desempenho.html'">Análise
+                Acadêmica Integral</button>
         </form>
         <div id="resultado"></div>
+        <canvas id="graficoDesempenho" width="400" height="200"></canvas>
     </div>
 
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     <script>
         function gerarCamposEventos() {
             let numEventos = parseInt(document.getElementById('eventos').value);
@@ -159,7 +232,7 @@
 
             if (numEventos > 12) {
                 numEventos = 12;
-                document.getElementById('eventos').value = 12; // Ajusta o valor de entrada para 12
+                document.getElementById('eventos').value = 12;
             }
 
             for (let i = 0; i < numEventos; i++) {
@@ -199,19 +272,69 @@
             });
 
             const totalEventos = statusEventos.length;
-            const mediaFaltas = (faltas / totalEventos) * 100;
+            const percentPresencas = (presencas / totalEventos) * 100;
+            const percentFaltas = (faltas / totalEventos) * 100;
+            const percentJustificativas = (justificativas / totalEventos) * 100;
 
             let resultado = `Presenças: ${presencas}, Faltas: ${faltas}, Justificativas: ${justificativas}`;
-            resultado += `<br>Porcentagem de Faltas: ${mediaFaltas.toFixed(2)}%`;
+            resultado += `<br>Porcentagem de Faltas: ${percentFaltas.toFixed(2)}%`;
 
-            if (mediaFaltas > 26.00) {
+            if (percentFaltas > 26.00) {
                 resultado += ' <span class="alert">Atenção!</span>';
             }
-            if (mediaFaltas >= 75) {
+            if (percentFaltas >= 75) {
                 resultado += ' <span class="alert">Taxa de Faltas Alta!</span>';
             }
 
             document.getElementById('resultado').innerHTML = resultado;
+
+            renderizarGrafico(percentPresencas, percentFaltas, percentJustificativas);
+        }
+
+        function renderizarGrafico(percentPresencas, percentFaltas, percentJustificativas) {
+            const ctx = document.getElementById('graficoDesempenho').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Presenças (%)', 'Faltas (%)', 'Justificativas (%)'],
+                    datasets: [{
+                        label: 'Desempenho do Aluno',
+                        data: [percentPresencas, percentFaltas, percentJustificativas],
+                        backgroundColor: [
+                            'rgba(0, 0, 255, 0.2)',  // Azul caneta
+                            'rgba(255, 0, 0, 0.2)',  // Vermelho
+                            'rgba(0, 128, 0, 0.2)'   // Verde
+                        ],
+                        borderColor: [
+                            'rgba(0, 0, 255, 1)',    // Azul caneta
+                            'rgba(255, 0, 0, 1)',    // Vermelho
+                            'rgba(0, 128, 0, 1)'     // Verde
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    plugins: {
+                        datalabels: {
+                            color: 'black',
+                            font: {
+                                weight: 'bold',
+                                size: 12
+                            },
+                            formatter: function (value) {
+                                return value.toFixed(2) + '%';
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                },
+                plugins: [ChartDataLabels]
+            });
         }
 
         function formatarData(data) {
@@ -250,28 +373,37 @@
             });
 
             const totalEventos = statusEventos.length;
-            const mediaFaltas = (faltas / totalEventos) * 100;
+            const percentPresencas = (presencas / totalEventos) * 100;
+            const percentFaltas = (faltas / totalEventos) * 100;
+            const percentJustificativas = (justificativas / totalEventos) * 100;
 
             const marginLeft = 20;
             const marginTop = 25;
             const lineHeight = 6;
             const larguraMaximaTexto = 40;
             const larguraPagina = doc.internal.pageSize.getWidth();
-
+            const alturaPagina = doc.internal.pageSize.getHeight();
             doc.setFont("times");
             doc.setFontSize(11);
 
             let yPos = marginTop;
+
+            // Adiciona o gráfico na parte superior direita, alinhado com o nome
+            const canvas = document.getElementById('graficoDesempenho');
+            const imgData = canvas.toDataURL('image/png');
+            const imgWidth = 60;  // Largura do gráfico
+            const imgHeight = 30; // Altura do gráfico
+            const imgX = larguraPagina - imgWidth - marginLeft; // Posição X para ficar à direita
+            const imgY = yPos; // Posição Y para alinhar com o nome
+            doc.addImage(imgData, 'PNG', imgX, imgY, imgWidth, imgHeight);
+
+            // Título e informações do usuário
             doc.setFont("times", "bold");
             doc.text("Relatório de Faltas", marginLeft, yPos);
             yPos += lineHeight;
 
-            if (mediaFaltas > 26.00) {
-                doc.setTextColor(255, 0, 0);
-            }
-            doc.text(`Nome: ${nome}`, marginLeft, yPos);
-            doc.setTextColor(0, 0, 0);
             doc.setFont("times", "normal");
+            doc.text(`Nome: ${nome}`, marginLeft, yPos);
             yPos += lineHeight;
             doc.text(`E-mail: ${email}`, marginLeft, yPos);
             yPos += lineHeight;
@@ -283,7 +415,11 @@
             yPos += lineHeight;
             doc.text(`Período: ${periodoInicio} até ${periodoFim}`, marginLeft, yPos);
 
+            // Ajusta yPos para continuar o texto abaixo da altura do gráfico
+            yPos = Math.max(yPos, imgY + imgHeight + lineHeight);
+
             yPos += lineHeight;
+
             doc.setFont("times", "bold");
             doc.text("Detalhes dos Eventos", larguraPagina / 2, yPos, { align: "center" });
             doc.setFont("times", "normal");
@@ -337,14 +473,14 @@
             doc.text(`Justificativas: ${justificativas}`, marginLeft + 90, yPos);
 
             yPos += lineHeight;
-            doc.text(`Porcentagem de Faltas: ${mediaFaltas.toFixed(2)}%`, marginLeft, yPos);
+            doc.text(`Porcentagem de Faltas: ${percentFaltas.toFixed(2)}%`, marginLeft, yPos);
 
-            if (mediaFaltas > 26.00) {
+            if (percentFaltas > 26.00) {
                 yPos += lineHeight;
                 doc.setTextColor(255, 0, 0);
                 doc.text('Atenção!', marginLeft, yPos);
             }
-            if (mediaFaltas >= 75) {
+            if (percentFaltas >= 75) {
                 yPos += lineHeight;
                 doc.text('Taxa de Faltas Alta!', marginLeft, yPos);
             }
@@ -352,6 +488,7 @@
 
             doc.save('relatorio_faltas.pdf');
         }
-    </script>    
+    </script>
 </body>
+
 </html>
